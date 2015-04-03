@@ -8,3 +8,6 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
 </IfModule>
 # END WordPress
+
+# More Rules from html5-boilerplate
+# https://github.com/h5bp/html5-boilerplate/blob/master/dist/.htaccess
