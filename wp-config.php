@@ -16,8 +16,21 @@ if ( file_exists( dirname( __FILE__ ) . '/local-config.php' ) ) {
 // ========================
 // Custom Content Directory
 // ========================
+define( 'WP_HOME',    'http://' . $_SERVER['SERVER_NAME'] );//RAZ
+define( 'WP_SITEURL', WP_HOME . '/wp' );//RAZ
+
 define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/content' );
-define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/content' );
+define( 'WP_CONTENT_URL', WP_HOME . '/content' );
+
+define('RELOCATE',true);
+
+$envs = array(
+  'development' => 'http://zeropod.dev',
+  'production'  => 'http://zeropod.dev'
+);
+define('ENVIRONMENTS', serialize($envs));
+
+define('WP_ENV', 'development');
 
 // ================================================
 // You almost certainly do not want to change these
@@ -60,8 +73,8 @@ define( 'WP_DEBUG_DISPLAY', false );
 // Debug mode
 // Debugging? Enable these. Can also enable them in local-config.php
 // =================================================================
-// define( 'SAVEQUERIES', true );
-// define( 'WP_DEBUG', true );
+define( 'SAVEQUERIES', true );
+define( 'WP_DEBUG', true );
 
 // ======================================
 // Load a Memcached config if we have one
